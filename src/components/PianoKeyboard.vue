@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-
 const props = defineProps<{
   highlightNote?: string; // ハイライトする音名 (例: "C4")
   disabled?: boolean; // 全ての鍵盤を無効にするか

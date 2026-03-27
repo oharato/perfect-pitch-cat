@@ -19,6 +19,11 @@ const selectLevel = async (level: number) => {
   router.push({ name: 'game', params: { level } })
 }
 
+const goToFreePlay = async () => {
+  await audioStore.init()
+  router.push({ name: 'freeplay' })
+}
+
 // Function to clear results display
 const clearResult = () => {
   finalScore.value = null
@@ -55,6 +60,10 @@ onMounted(() => {
       <button @click="selectLevel(2)" :disabled="hasResult">
         <h2>ステップ2</h2>
         <p>白鍵の1オクターブ</p>
+      </button>
+      <button @click="goToFreePlay" :disabled="hasResult" class="freeplay-button">
+        <h2>フリープレイ</h2>
+        <p>PCキーボードで自由に演奏</p>
       </button>
     </div>
   </div>
@@ -119,5 +128,14 @@ onMounted(() => {
 }
 .result-display button:hover {
   background-color: #0097a7;
+}
+
+.freeplay-button {
+  background-color: #e8f5e9 !important;
+  border-color: #4CAF50 !important;
+}
+
+.freeplay-button:hover:not(:disabled) {
+  background-color: #c8e6c9 !important;
 }
 </style>
